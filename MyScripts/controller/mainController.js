@@ -17,7 +17,7 @@ app.controller('mainController', [function () {
             console.log(dato);
         };
         vm.calcular = function (gasolina) {
-            gasolina.base_gravable = gasolina.galones_gravado * gasolina.precio_referencia;
-            gasolina.sobretasa = Math.trunc(gasolina.base_gravable / 10);
+            gasolina.base_gravable = gasolina.galones_gravado * (1 - (gasolina.porcentaje_alcohol / 100)) * gasolina.precio_referencia;
+            gasolina.sobretasa = gasolina.base_gravable * 0.06;
         };
     }]);
