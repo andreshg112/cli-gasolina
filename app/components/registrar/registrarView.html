@@ -1,90 +1,303 @@
-<h2>Registrar Declaración</h2>
-<form class="form-horizontal" role="form">
-    <table class="table table-responsive table-bordered">
-        <caption>Sección E: Información general</caption>
-        <tr>
-            <td>Apellidos y Nombre o Razón Social del Declarante:<input class="form-control" type="text" ng-model="main.declaracion.nombres"></td>
-            <td>
-                Tipo de documento:
-                <select ng-model="main.declaracion.tipo_documento" class="form-control">
-                    <option>CC</option>
-                    <option>NIT</option>
-                </select>
-            </td>
-            <td>Número:<input type="number" class="form-control" ng-model="main.declaracion.numero"></td>
-            <td>D.V:<input type="number" class="form-control" ng-model="main.declaracion.dv"></td>
-        </tr>
-        <tr>
-            <td>Dirección:<input class="form-control" type="text" ng-model="main.declaracion.direccion"></td>
-            <td>
-                Departamento:
-                <select ng-model="main.declaracion.departamento" class="form-control">
-                    <option>Cesar</option>
-                    <option>Magdalena</option>
-                </select>
-            </td>
-            <td>Municipio:<input type="text" class="form-control" ng-model="main.declaracion.municipio"></td>
-            <td>Teléfono:<input type="number" class="form-control" ng-model="main.declaracion.telefono"/></td>
-        </tr>
-    </table>
-    <table class="table table-responsive table-bordered">
-        <caption>Sección F: Liquidación</caption>
-        <tr>
-            <th>Clase de producto</th>
-            <th>Galones gravado</th>
-            <th>Precio de referencia por galón</th>
-            <th>% de alcohol carbur.</th>
-            <th>Base gravable</th>
-            <th>Sobretasa</th>
-        </tr>
-        <tr>
-            <th>Gasolina corriente básica</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_basica.galones_gravado" ng-change="main.calcular(main.declaracion.corriente_basica)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_basica.precio_referencia" ng-change="main.calcular(main.declaracion.corriente_basica)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_basica.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_basica.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_basica.sobretasa" disabled=""/></th>
-        </tr>
-        <tr>
-            <th>Corriente oxigenada</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_oxigenada.galones_gravado" ng-change="main.calcular(main.declaracion.corriente_oxigenada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_oxigenada.precio_referencia" ng-change="main.calcular(main.declaracion.corriente_oxigenada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_oxigenada.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_oxigenada.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.corriente_oxigenada.sobretasa" disabled=""/></th>
-        </tr>
-        <tr>
-            <th>Gasolina extra básica</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_basica.galones_gravado" ng-change="main.calcular(main.declaracion.extra_basica)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_basica.precio_referencia" ng-change="main.calcular(main.declaracion.extra_basica)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_basica.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_basica.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_basica.sobretasa" disabled=""/></th>
-        </tr>
-        <tr>
-            <th>Gasolina extra oxigenada</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_oxigenada.galones_gravado" ng-change="main.calcular(main.declaracion.extra_oxigenada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_oxigenada.precio_referencia" ng-change="main.calcular(main.declaracion.extra_oxigenada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_oxigenada.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_oxigenada.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.extra_oxigenada.sobretasa" disabled=""/></th>
-        </tr>
-        <tr>
-            <th>Gasolina importada</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.importada.galones_gravado" ng-change="main.calcular(main.declaracion.importada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.importada.precio_referencia" ng-change="main.calcular(main.declaracion.importada)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.importada.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.importada.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.importada.sobretasa" disabled=""/></th>
-        </tr>
-        <tr>
-            <th>Gasolina NAL. ZON. ESP. FRONT</th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.fronteriza.galones_gravado" ng-change="main.calcular(main.declaracion.fronteriza)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.fronteriza.precio_referencia" ng-change="main.calcular(main.declaracion.fronteriza)"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.fronteriza.porcentaje_alcohol"/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.fronteriza.base_gravable" disabled=""/></th>
-            <th><input type="number" class="form-control" ng-model="main.declaracion.fronteriza.sobretasa" disabled=""/></th>
-        </tr>
-    </table>
-    <center><input type="button" ng-click="main.guardar()" class="btn btn-success" value="Guardar"/></center>
-</form>
+<h1>Registrar Declaración</h1>
+<div class="container">
+    <form class="form-horizontal" role="form">
+        <div id="fila-1" class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2>Declaración de la Sobretasa Departamental de la Gasolina Motor</h2>Formato MHCP-DAF-017-2009-GAS
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sección A: Información Entidad Territorial</div>
+                    <div class="panel-body">
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label">Departamento:</label>
+                            <div class="col-sm-4">
+                                <input type="text" ng-model="index.declaracion.entidad.departamento" class="form-control" />
+                            </div>
+                            <label class="col-sm-3 control-label">Código DANE:</label>
+                            <div class="col-sm-3">
+                                <input type="text" ng-model="index.declaracion.entidad.codigo_dane" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label">NIT:</label>
+                            <div class="col-sm-4">
+                                <input type="text" ng-model="index.declaracion.entidad.nit" class="form-control" />
+                            </div>
+                            <label class="col-sm-3 control-label">D. V.:</label>
+                            <div class="col-sm-3">
+                                <input type="text" ng-model="index.declaracion.entidad.dv" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fila-2" class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sección B: Calidad de declarante</div>
+                    <div class="panel-body">
+                        <select ng-model="index.declaracion.calidad_declarante" class="form-control">
+                            <option>Distribuidor mayorista</option>
+                            <option>Otra calidad</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sección C: Información de la declaración que se corrige</div>
+                    <div class="panel-body">
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label">Correción:</label>
+                            <div class="col-sm-1">
+                                <input type="checkbox" ng-model="index.declaracion.correccion.valor" class="form-control" />
+                            </div>
+                            <label class="col-sm-2 control-label">Número de declaración:</label>
+                            <div class="col-sm-3">
+                                <input type="number" ng-model="index.declaracion.correcion.numero_declaracion" class="form-control" />
+                            </div>
+                            <label class="col-sm-1 control-label">Fecha:</label>
+                            <div class="col-sm-3">
+                                <input type="date" ng-model="index.declaracion.correcion.fecha" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fila-3" class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sección D: Período gravable</div>
+                    <div class="panel-body">
+                        <label class="control-label col-sm-2">
+                            Año
+                        </label>
+                        <div class="col-sm-4">
+                            <select ng-model="index.declaracion.anio" class="form-control">
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                            </select>
+                        </div>
+                        <label class="control-label col-sm-2">
+                            Mes
+                        </label>
+                        <div class="col-sm-4">
+                            <select ng-model="index.declaracion.mes" class="form-control">
+                                <option>Enero</option>
+                                <option>Febrero</option>
+                                <option>Marzo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="fila-3" class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sección E: Información general</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">E1: Apellidos y Nombre o Razón Social del declarante</div>
+                                    <div class="panel-body">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">E2: Identificación del declarante</div>
+                                    <div class="panel-body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-responsive table-bordered">
+            <caption></caption>
+            <tr>
+                <td>Apellidos y Nombre o Razón Social del Declarante:
+                    <input class="form-control" type="text" ng-model="index.declaracion.nombres">
+                </td>
+                <td>
+                    Tipo de documento:
+                    <select ng-model="index.declaracion.tipo_documento" class="form-control">
+                        <option>CC</option>
+                        <option>NIT</option>
+                    </select>
+                </td>
+                <td>Número:
+                    <input type="number" class="form-control" ng-model="index.declaracion.numero">
+                </td>
+                <td>D.V:
+                    <input type="number" class="form-control" ng-model="index.declaracion.dv">
+                </td>
+            </tr>
+            <tr>
+                <td>Dirección:
+                    <input class="form-control" type="text" ng-model="index.declaracion.direccion">
+                </td>
+                <td>
+                    Departamento:
+                    <select ng-model="index.declaracion.departamento" class="form-control">
+                        <option>Cesar</option>
+                        <option>Magdalena</option>
+                    </select>
+                </td>
+                <td>Municipio:
+                    <input type="text" class="form-control" ng-model="index.declaracion.municipio">
+                </td>
+                <td>Teléfono:
+                    <input type="number" class="form-control" ng-model="index.declaracion.telefono" />
+                </td>
+            </tr>
+        </table>
+        <table class="table table-responsive table-bordered">
+            <caption>Sección F: Liquidación</caption>
+            <tr>
+                <th>Clase de producto</th>
+                <th>Galones gravado</th>
+                <th>Precio de referencia por galón</th>
+                <th>% de alcohol carbur.</th>
+                <th>Base gravable</th>
+                <th>Sobretasa</th>
+            </tr>
+            <tr>
+                <th>Gasolina corriente básica</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_basica.galones_gravado" ng-change="index.calcular(index.declaracion.corriente_basica)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_basica.precio_referencia" ng-change="index.calcular(index.declaracion.corriente_basica)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_basica.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_basica.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_basica.sobretasa" disabled="" />
+                </th>
+            </tr>
+            <tr>
+                <th>Corriente oxigenada</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_oxigenada.galones_gravado" ng-change="index.calcular(index.declaracion.corriente_oxigenada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_oxigenada.precio_referencia" ng-change="index.calcular(index.declaracion.corriente_oxigenada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_oxigenada.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_oxigenada.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.corriente_oxigenada.sobretasa" disabled="" />
+                </th>
+            </tr>
+            <tr>
+                <th>Gasolina extra básica</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_basica.galones_gravado" ng-change="index.calcular(index.declaracion.extra_basica)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_basica.precio_referencia" ng-change="index.calcular(index.declaracion.extra_basica)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_basica.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_basica.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_basica.sobretasa" disabled="" />
+                </th>
+            </tr>
+            <tr>
+                <th>Gasolina extra oxigenada</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_oxigenada.galones_gravado" ng-change="index.calcular(index.declaracion.extra_oxigenada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_oxigenada.precio_referencia" ng-change="index.calcular(index.declaracion.extra_oxigenada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_oxigenada.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_oxigenada.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.extra_oxigenada.sobretasa" disabled="" />
+                </th>
+            </tr>
+            <tr>
+                <th>Gasolina importada</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.importada.galones_gravado" ng-change="index.calcular(index.declaracion.importada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.importada.precio_referencia" ng-change="index.calcular(index.declaracion.importada)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.importada.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.importada.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.importada.sobretasa" disabled="" />
+                </th>
+            </tr>
+            <tr>
+                <th>Gasolina NAL. ZON. ESP. FRONT</th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.fronteriza.galones_gravado" ng-change="index.calcular(index.declaracion.fronteriza)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.fronteriza.precio_referencia" ng-change="index.calcular(index.declaracion.fronteriza)"
+                    />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.fronteriza.porcentaje_alcohol" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.fronteriza.base_gravable" disabled="" />
+                </th>
+                <th>
+                    <input type="number" class="form-control" ng-model="index.declaracion.fronteriza.sobretasa" disabled="" />
+                </th>
+            </tr>
+        </table>
+        <center>
+            <input type="button" ng-click="index.guardar()" class="btn btn-success" value="Guardar" />
+        </center>
+    </form>
+</div>

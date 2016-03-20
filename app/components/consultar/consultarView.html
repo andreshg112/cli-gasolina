@@ -11,13 +11,13 @@
                 <th>Número</th>
                 <th>&nbsp;</th>
             </tr>
-            <tr ng-repeat="declaracion in main.declaraciones| filter:filtro track by $index">
+            <tr ng-repeat="declaracion in index.declaraciones| filter:filtro track by $index">
                 <td>{{declaracion.nombres}}</td>
                 <td>{{declaracion.tipo_documento}}</td>
                 <td>{{declaracion.numero}}</td>
                 <td>
                     <p>
-                        <a ng-click="main.mostrar(declaracion)" href="javascript:;">Ver</a>
+                        <a ng-click="index.mostrar(declaracion)" href="javascript:;">Ver</a>
                     </p>
                 </td>
             </tr>
