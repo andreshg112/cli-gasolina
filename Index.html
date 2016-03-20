@@ -1,30 +1,54 @@
 <!DOCTYPE html>
 <html ng-app="recibosApp">
-    <head>
-        <meta charset="UTF-8">
-        <script src="Scripts/jquery-1.9.1.min.js"></script>
-        <script src="Scripts/bootstrap.min.js"></script>
-        <!-- <link href="Content/bootstrap.min.css" rel="stylesheet" /> -->
-        <link href="http://bootswatch.com/simplex/bootstrap.min.css" rel="stylesheet"/>
-        <script src="Scripts/angular.min.js"></script>
-        <script src="Scripts/angular-route.js"></script>
-        <script src="MyScripts/modulo/pModule.js"></script>
-        <script src="MyScripts/service/pService.js"></script>
-        <script src="MyScripts/controller/mainController.js"></script>
-        <script src="MyScripts/controller/controllers.js" ></script>
-        <script src="MyScripts/utilities.js" ></script>
-        <link href="css/styles.css" rel="stylesheet"/>
-    </head>
-    <body class="container" ng-controller="mainController as main">
-        <h1>Declaración de la Sobretasa Departamental de la Gasolina a Motor</h1>
-        <div>
-            <ul>
-                <li><a href="#/Registrar/">Registrar</a></li>
-                <li><a href="#/Consultar/">Consultar</a></li>
-                <li><a href="#/Acerca/">Acerca de</a></li>
-            </ul>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Parcial 1 - Tecnología Web II</title>
+    <link href="assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body ng-controller="indexController as index">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://sites.google.com/site/tecweb2upc/">Tecnología Web II</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/Registrar/">Registrar<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#/Consultar/">Consultar</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Filtro" type="text">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/Acerca/">Acerca de</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="container">
+        <h1>Declaración de la Sobretasa Departamental de la Gasolina a Motor</h1>
         <div ng-view>
         </div>
-    </body>
+    </div>
+    <script src="assets/libs/jquery/jquery-1.9.1.min.js"></script>
+    <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular/angular-route.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/components/index/indexController.js"></script>
+</body>
+
 </html>

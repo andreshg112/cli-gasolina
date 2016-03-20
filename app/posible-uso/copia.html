@@ -1,0 +1,138 @@
+<div>
+    <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Nuevo</a></p>
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="H2">Detalles del recibo</h4>
+                </div>
+                <div id="para-imprimir" class="modal-body">
+                    <div id="vista-recibo">
+                        <div class="row">
+                            <strong class="col-sm-offset-4 col-sm-4 col-sm-offset-4">
+                                Recibo de Caja Menor
+                            </strong>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">Ciudad: {{recibo.ciudad}}</div>
+                            <div class="col-sm-4">Fecha: {{recibo.fecha}}</div>
+                            <div class="col-sm-4">No. {{recibo.numero}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">Pagado a: {{recibo.pagado_a}}</div>
+                            <div class="col-sm-4">$ {{recibo.valor}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">Por concepto de: {{recibo.concepto}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">Valor en letras: {{recibo.valor_letras}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">Código: {{recibo.codigo}}</div>
+                            <div class="col-sm-7">Firma del beneficiario:</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">Aprobado: {{recibo.aprobado}}</div>
+                            <div class="col-sm-2">C.C. </div>
+                            <div class="col-sm-2">NIT </div>
+                            <div class="col-sm-3">No.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <input ng-click="imprSelec('para-imprimir')" type="button" class="btn btn-success" value="Imprimir"/>
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Registrar</h4>
+                    <h4 class="modal-title" id="H1" ng-show="editMode">Edit Contacto</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <table class=" table table-responsive table-bordered">
+                            <caption>Recibo de Caja Menor</caption>
+                            <tr>
+                                <td>Ciudad <input class="form-control" type="text" ng-model="recibo.ciudad"> </td>
+                                <td>Fecha <input type="date" class="form-control" ng-model="recibo.fecha"> </td>
+                            </tr>
+                            <tr>
+                                <td>Pagado a: <input type="text" class="form-control" ng-model="recibo.pagado_a"></td>
+                                <td>$ <input type="number" class="form-control" ng-model="recibo.valor" ng-change="valorLetras();"></td>
+                            </tr>
+                            <tr>
+                                <td>Por concepto de: <input type="textarea" class="form-control" ng-model="recibo.concepto"></td>
+                                <td>Valor en letras: 
+                                    {{recibo.valor_letras}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Código: <input type="text" class="form-control" ng-model="recibo.codigo"></td>
+                                <td>Aprobado: <input type="text" class="form-control" ng-model="recibo.aprobado"></td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-sm-offset-3 col-sm-9">
+
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" ng-click="cancel()" />
+
+                        <span data-ng-hide="editMode">
+                            <input type="submit" value="Add" data-ng-click="add()" class="btn btn-primary" />
+                        </span>
+                        <span data-ng-show="editMode">
+                            <input type="submit" value="Update" data-ng-click="update(recibo)" class="btn btn-primary" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="col-md-12">
+        <div class="form-group">
+            Filtro: <input class="form-control" type="text" ng-model="filtro"/>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Número</th>
+                    <th>Pagado a</th>
+                    <th>Por concepto de</th>
+                    <th>Fecha</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr ng-repeat="recibo in recibos | filter:filtro track by $index" ng-class="recibo.estado == 'anulado' ? 'danger' : 'active'">
+                    <td>{{recibo.numero}}</td>
+                    <td>{{recibo.pagado_a}}</td>
+                    <td>{{recibo.concepto}}</td>
+                    <td>{{recibo.fecha}}</td>
+                    <td>
+                        <p>
+                            <a data-ng-click="get(recibo)" href="javascript:;">Ver</a> |
+                            <!-- <a ng-click="imprSelec('regModal')" href="javascript:;">Imprimir</a> | -->
+                            <a ng-hide="recibo.estado == 'anulado'" ng-click="anular(recibo)" href="javascript:;">Anular</a>
+                            <!-- <a data-ng-click="edit(recibo)" href="javascript:;">Edit</a> -->
+                            <!--<a data-ng-click="showconfirm(recibo)" href="javascript:;">Delete</a>-->
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
