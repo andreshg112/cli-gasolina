@@ -3,7 +3,9 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2>Declaración de la Sobretasa Departamental de la Gasolina Motor</h2>Formato MHCP-DAF-017-2009-GAS
+                    <center>
+                        <h2>Declaración de la Sobretasa Departamental de la Gasolina Motor</h2>Formato MHCP-DAF-017-2009-GAS
+                    </center>
                 </div>
             </div>
         </div>
@@ -56,9 +58,9 @@
                         <div class="col-sm-1">
                             <input type="checkbox" ng-model="index.declaracion.correccion.valor" class="form-control" />
                         </div>
-                        <label class="col-sm-2 control-label">Número de declaración:</label>
+                        <label class="col-sm-2">Número de declaración:</label>
                         <div class="col-sm-3">
-                            <input type="number" ng-model="index.declaracion.correccion.numero_declaracion" class="form-control" />
+                            <input type="number" min="0" ng-model="index.declaracion.correccion.numero_declaracion" class="form-control" />
                         </div>
                         <label class="col-sm-1 control-label">Fecha:</label>
                         <div class="col-sm-3">
@@ -113,7 +115,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">E2: Identificación del declarante</div>
                                 <div class="panel-body">
-                                    <label class="control-label col-sm-4">Tipo de documento:</label>
+                                    <label class="col-sm-2">Tipo de documento:</label>
                                     <div class="col-sm-2">
                                         <select ng-model="index.declaracion.tipo_documento" class="form-control">
                                             <option>CC</option>
@@ -121,12 +123,12 @@
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-2">Número:</label>
-                                    <div class="col-sm-2">
-                                        <input type="number" class="form-control" ng-model="index.declaracion.numero">
+                                    <div class="col-sm-4">
+                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.numero">
                                     </div>
                                     <label class="control-label col-sm-1">D.V.:</label>
                                     <div class="col-sm-1">
-                                        <input type="number" class="form-control" ng-model="index.declaracion.dv">
+                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.dv">
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +155,7 @@
                                     </div>
                                     <label class="control-label col-sm-1">Teléfono:</label>
                                     <div class="col-sm-2">
-                                        <input type="number" class="form-control" ng-model="index.declaracion.telefono" />
+                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.telefono" />
                                     </div>
                                 </div>
                             </div>
@@ -163,35 +165,50 @@
             </div>
         </div>
     </div>
-    <table class="table table-responsive table-bordered">
-        <caption>Sección F: Liquidación</caption>
-        <tr>
-            <th>Clase de producto</th>
-            <th>Galones gravado</th>
-            <th>Precio de referencia por galón</th>
-            <th>% de alcohol carbur.</th>
-            <th>Base gravable</th>
-            <th>Sobretasa</th>
-        </tr>
-        <tr ng-repeat="gasolina in index.declaracion.gasolinas">
-            <td>{{$index + 1}}. {{gasolina.clase}}</td>
-            <td>
-                <input type="number" class="form-control" ng-model="gasolina.galones_gravado" ng-change="index.calcular(gasolina)" />
-            </td>
-            <td>
-                <input type="number" class="form-control" ng-model="gasolina.precio_referencia" ng-change="index.calcular(gasolina)" />
-            </td>
-            <td>
-                <input type="number" class="form-control" ng-model="gasolina.porcentaje_alcohol" ng-change="index.calcular(gasolina)" />
-            </td>
-            <td>
-                <input type="number" class="form-control" ng-model="gasolina.base_gravable" disabled="" />
-            </td>
-            <td>
-                <input type="number" class="form-control" ng-model="gasolina.sobretasa" disabled="" />
-            </td>
-        </tr>
-    </table>
+    <div id="fila-5" class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Sección F: Liquidación
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Clase de producto</th>
+                                <th>Galones gravado</th>
+                                <th>Precio de referencia por galón</th>
+                                <th>% de alcohol carbur.</th>
+                                <th>Base gravable</th>
+                                <th>Sobretasa</th>
+                            </tr>
+                            <tr ng-repeat="gasolina in index.declaracion.gasolinas">
+                                <td>{{$index + 1}}. {{gasolina.clase}}</td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.galones_gravado" ng-change="index.calcular(gasolina)"
+                                    />
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.precio_referencia" ng-change="index.calcular(gasolina)"
+                                    />
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.porcentaje_alcohol" ng-change="index.calcular(gasolina)"
+                                    />
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.base_gravable" disabled="" />
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.sobretasa" disabled="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <center>
         <input type="button" ng-click="index.guardar()" class="btn btn-success" value="Guardar" />
     </center>
