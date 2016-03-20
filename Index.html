@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Parcial 1 - Tecnología Web II</title>
     <link href="assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
 </head>
 
 <body ng-controller="indexController as index">
@@ -22,7 +22,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#/Registrar/">Registrar<span class="sr-only">(current)</span></a></li>
+                    <li ng-click="template = 'registrar'" ng-class="active"><a href="#/Registrar/">Registrar<span class="sr-only">(current)</span></a></li>
                     <li><a href="#/Consultar/">Consultar</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
@@ -37,9 +37,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div ng-view>
-        </div>
+    <div class="container" ng-view>
     </div>
     <script src="assets/libs/jquery/jquery-1.9.1.min.js"></script>
     <script src="assets/libs/bootstrap/bootstrap.min.js"></script>

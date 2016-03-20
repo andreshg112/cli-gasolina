@@ -1,4 +1,6 @@
+"use strict";
+
 var app;
-(function () {
+(function() {
     app = angular.module("recibosApp", ['ngRoute']);
 })();
