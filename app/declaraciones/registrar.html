@@ -16,21 +16,21 @@
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">Departamento:</label>
                         <div class="col-sm-4">
-                            <input type="text" ng-model="index.declaracion.entidad.departamento" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad.departamento" class="form-control" />
                         </div>
                         <label class="col-sm-3 control-label">Código DANE:</label>
                         <div class="col-sm-3">
-                            <input type="text" ng-model="index.declaracion.entidad.codigo_dane" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad.codigo_dane" class="form-control" />
                         </div>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">NIT:</label>
                         <div class="col-sm-4">
-                            <input type="text" ng-model="index.declaracion.entidad.nit" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad.nit" class="form-control" />
                         </div>
                         <label class="col-sm-3 control-label">D. V.:</label>
                         <div class="col-sm-3">
-                            <input type="text" ng-model="index.declaracion.entidad.dv" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad.dv" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Sección B: Calidad de declarante</div>
                 <div class="panel-body">
-                    <select ng-model="index.declaracion.calidad_declarante" class="form-control">
+                    <select ng-model="regVm.declaracion.calidad_declarante" class="form-control">
                         <option>Distribuidor mayorista</option>
                         <option>Otra calidad</option>
                     </select>
@@ -56,15 +56,15 @@
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">Correción:</label>
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="index.declaracion.correccion.valor" class="form-control" />
+                            <input type="checkbox" ng-model="regVm.declaracion.correccion.valor" class="form-control" />
                         </div>
                         <label class="col-sm-2">Número de declaración:</label>
                         <div class="col-sm-3">
-                            <input type="number" min="0" ng-model="index.declaracion.correccion.numero_declaracion" class="form-control" />
+                            <input type="number" min="0" ng-model="regVm.declaracion.correccion.numero_declaracion" class="form-control" />
                         </div>
                         <label class="col-sm-1 control-label">Fecha:</label>
                         <div class="col-sm-3">
-                            <input id="datepicker" type="date" ng-model="index.declaracion.correccion.fecha" class="form-control" />
+                            <input id="datepicker" type="date" ng-model="regVm.declaracion.correccion.fecha" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="panel-body">
                     <label class="control-label col-sm-2">Año:</label>
                     <div class="col-sm-4">
-                        <select ng-model="index.declaracion.anio" class="form-control">
+                        <select ng-model="regVm.declaracion.anio" class="form-control">
                             <option>2014</option>
                             <option>2015</option>
                             <option>2016</option>
@@ -86,7 +86,7 @@
                     </div>
                     <label class="control-label col-sm-2">Mes:</label>
                     <div class="col-sm-4">
-                        <select ng-model="index.declaracion.mes" ng-options="mes for mes in index.meses" class="form-control">
+                        <select ng-model="regVm.declaracion.mes" ng-options="mes for mes in regVm.meses" class="form-control">
                         </select>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                                 <div class="panel-body">
                                     <label class="control-label col-sm-6">Apellidos y Nombre o Razón Social:</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control" type="text" ng-model="index.declaracion.nombres">
+                                        <input class="form-control" type="text" ng-model="regVm.declaracion.nombres">
                                     </div>
                                 </div>
                             </div>
@@ -117,18 +117,18 @@
                                 <div class="panel-body">
                                     <label class="col-sm-2">Tipo de documento:</label>
                                     <div class="col-sm-2">
-                                        <select ng-model="index.declaracion.tipo_documento" class="form-control">
+                                        <select ng-model="regVm.declaracion.tipo_documento" class="form-control">
                                             <option>CC</option>
                                             <option>NIT</option>
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-2">Número:</label>
                                     <div class="col-sm-4">
-                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.numero">
+                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.numero">
                                     </div>
                                     <label class="control-label col-sm-1">D.V.:</label>
                                     <div class="col-sm-1">
-                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.dv">
+                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.dv">
                                     </div>
                                 </div>
                             </div>
@@ -140,22 +140,22 @@
                                 <div class="panel-body">
                                     <strong class="col-sm-1">E3. Dirección:</strong>
                                     <div class="col-sm-2">
-                                        <input class="form-control" type="text" ng-model="index.declaracion.direccion">
+                                        <input class="form-control" type="text" ng-model="regVm.declaracion.direccion">
                                     </div>
                                     <label class="control-label col-sm-1">Departamento:</label>
                                     <div class="col-sm-2">
-                                        <select ng-model="index.declaracion.departamento" class="form-control">
+                                        <select ng-model="regVm.declaracion.departamento" class="form-control">
                                             <option>Cesar</option>
                                             <option>Magdalena</option>
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-1">Municipio:</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" ng-model="index.declaracion.municipio">
+                                        <input type="text" class="form-control" ng-model="regVm.declaracion.municipio">
                                     </div>
                                     <label class="control-label col-sm-1">Teléfono:</label>
                                     <div class="col-sm-2">
-                                        <input type="number" min="0" class="form-control" ng-model="index.declaracion.telefono" />
+                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.telefono" />
                                     </div>
                                 </div>
                             </div>
@@ -182,18 +182,18 @@
                                 <th>Base gravable</th>
                                 <th>Sobretasa</th>
                             </tr>
-                            <tr ng-repeat="gasolina in index.declaracion.gasolinas">
+                            <tr ng-repeat="gasolina in regVm.declaracion.gasolinas">
                                 <td>{{$index + 1}}. {{gasolina.clase}}</td>
                                 <td>
-                                    <input type="number" min="0" class="form-control" ng-model="gasolina.galones_gravado" ng-change="index.calcular(gasolina)"
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.galones_gravado" ng-change="regVm.calcular(gasolina)"
                                     />
                                 </td>
                                 <td>
-                                    <input type="number" min="0" class="form-control" ng-model="gasolina.precio_referencia" ng-change="index.calcular(gasolina)"
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.precio_referencia" ng-change="regVm.calcular(gasolina)"
                                     />
                                 </td>
                                 <td>
-                                    <input type="number" min="0" class="form-control" ng-model="gasolina.porcentaje_alcohol" ng-change="index.calcular(gasolina)"
+                                    <input type="number" min="0" class="form-control" ng-model="gasolina.porcentaje_alcohol" ng-change="regVm.calcular(gasolina)"
                                     />
                                 </td>
                                 <td>
@@ -210,6 +210,6 @@
         </div>
     </div>
     <center>
-        <input type="button" ng-click="index.guardar()" class="btn btn-success" value="Guardar" />
+        <input type="button" ng-click="regVm.guardar()" class="btn btn-success" value="Guardar" />
     </center>
 </form>
