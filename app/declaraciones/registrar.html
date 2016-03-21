@@ -78,10 +78,7 @@
                 <div class="panel-body">
                     <label class="control-label col-sm-2">Año:</label>
                     <div class="col-sm-4">
-                        <select ng-model="regVm.declaracion.anio" class="form-control">
-                            <option>2014</option>
-                            <option>2015</option>
-                            <option>2016</option>
+                        <select ng-model="regVm.declaracion.anio" ng-options="anio for anio in regVm.anios" class="form-control">
                         </select>
                     </div>
                     <label class="control-label col-sm-2">Mes:</label>
@@ -144,9 +141,7 @@
                                     </div>
                                     <label class="control-label col-sm-1">Departamento:</label>
                                     <div class="col-sm-2">
-                                        <select ng-model="regVm.declaracion.departamento" class="form-control">
-                                            <option>Cesar</option>
-                                            <option>Magdalena</option>
+                                        <select ng-model="regVm.declaracion.departamento" ng-options="departamento for departamento in regVm.departamentos" class="form-control">
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-1">Municipio:</label>

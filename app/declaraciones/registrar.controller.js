@@ -5,18 +5,17 @@
         .module('gasolinaApp')
         .controller('RegistrarController', RegistrarController);
 
-    RegistrarController.$inject = ['DeclaracionesService'];
-    function RegistrarController(DeclaracionesService) {
+    RegistrarController.$inject = ['DeclaracionesService', 'MesesService', 'DepartamentosService', 'AniosService'];
+    function RegistrarController(DeclaracionesService, MesesService, DepartamentosService, AniosService) {
         console.log("Entró a RegistrarController");
         var vm = this;
 
         //Declaraciones de variables y funciones, en orden alfabético.
         vm.calcular = calcular;
         vm.guardar = guardar;
-        vm.meses = [
-            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-        ];
+        vm.meses = MesesService.getMeses();
+        vm.departamentos = DepartamentosService.getDepartamentos();
+        vm.anios = AniosService.getAnios();
 
         function activate() {
             vm.declaracion = {};
