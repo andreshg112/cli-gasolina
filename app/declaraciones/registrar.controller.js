@@ -10,16 +10,20 @@
         console.log("Entró a RegistrarController");
         var vm = this;
 
-        //Declaraciones de variables y funciones, en orden alfabético.
+        //Declaraciones de variables en orden alfabético.
+        vm.anios = AniosService.getAnios();
         vm.calcular = calcular;
+        vm.cargarMunicipios = cargarMunicipios;
+        vm.departamentos = DepartamentosService.getDepartamentos();
         vm.guardar = guardar;
         vm.meses = MesesService.getMeses();
-        vm.departamentos = DepartamentosService.getDepartamentos();
-        vm.anios = AniosService.getAnios();
 
+        //Funciones, en orden alfabético
         function activate() {
             vm.declaracion = {};
             vm.declaracion.correccion = {};
+            vm.declaracion.municipio = "";
+            vm.municipios = [];
             //Así son las clases en Javascript ES 5.
             var Gasolina = function(clase = "") {
                 this.clase = clase;
@@ -38,21 +42,27 @@
                 new Gasolina("Gasolina NAL. ZON. ESP. FRONT")
             ];
         }
-        //Funciones
+
         function calcular(gasolina) {
             gasolina.base_gravable = gasolina.galones_gravado * (1 - (gasolina.porcentaje_alcohol / 100)) * gasolina.precio_referencia;
             gasolina.sobretasa = gasolina.base_gravable * 0.06;
         };
+
+        function cargarMunicipios() {
+            vm.declaracion.municipio = "";
+            console.log(vm.municipios = DepartamentosService.getMunicipios(vm.declaracion.departamento));
+        }
 
         function guardar() {
             vm.declaracion.correccion.fecha = $('#datepicker').val();
             console.log(vm.declaracion);
             if (DeclaracionesService.save(vm.declaracion)) {
                 activate();
-                alert("Registró correctamente");
+                vm.respuestaRegistro = "Registró correctamente";
             } else {
-                alert("Error registrando.")
+                vm.respuestaRegistro = "Error registrando.";
             }
+            $("#modalRegistro").modal();
         }
 
         activate();

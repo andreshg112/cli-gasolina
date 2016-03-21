@@ -16,7 +16,8 @@
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">Departamento:</label>
                         <div class="col-sm-4">
-                            <input type="text" ng-model="regVm.declaracion.entidad.departamento" class="form-control" />
+                            <select ng-model="regVm.declaracion.entidad.departamento" ng-options="depart.nombre as depart.nombre for depart in regVm.departamentos"
+                            class="form-control"></select>
                         </div>
                         <label class="col-sm-3 control-label">Código DANE:</label>
                         <div class="col-sm-3">
@@ -121,7 +122,7 @@
                                     </div>
                                     <label class="control-label col-sm-2">Número:</label>
                                     <div class="col-sm-4">
-                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.numero">
+                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.numero_documento">
                                     </div>
                                     <label class="control-label col-sm-1">D.V.:</label>
                                     <div class="col-sm-1">
@@ -141,12 +142,16 @@
                                     </div>
                                     <label class="control-label col-sm-1">Departamento:</label>
                                     <div class="col-sm-2">
-                                        <select ng-model="regVm.declaracion.departamento" ng-options="departamento for departamento in regVm.departamentos" class="form-control">
+                                        <select ng-model="regVm.declaracion.departamento" ng-options="depart.nombre as depart.nombre for depart in regVm.departamentos"
+                                        ng-change="regVm.cargarMunicipios()" class="form-control">
+                                            <option value="">Seleccione un departamento</option>
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-1">Municipio:</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" ng-model="regVm.declaracion.municipio">
+                                        <select ng-model="regVm.declaracion.municipio" ng-options="munic for munic in regVm.municipios" class="form-control">
+                                            <option value="" ng-if="false"></option>
+                                        </select>
                                     </div>
                                     <label class="control-label col-sm-1">Teléfono:</label>
                                     <div class="col-sm-2">
@@ -208,3 +213,18 @@
         <input type="button" ng-click="regVm.guardar()" class="btn btn-success" value="Guardar" />
     </center>
 </form>
+
+<!-- Modal de respuesta al registro -->
+<div id="modalRegistro" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: center;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{regVm.respuestaRegistro}}</h4>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
