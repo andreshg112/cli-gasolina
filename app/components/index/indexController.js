@@ -1,10 +1,11 @@
 "use strict";
 
-app.controller('indexController', [function() {
+app.controller('indexController', ['$location', function($location) {
     console.log("Entró a indexController");
     var vm = this;
     var init = function() {
         vm.declaracion = {};
+        vm.declaracion.correccion = {};
         //Así son las clases en Javascript ES 5.
         var Gasolina = function(clase = "") {
             this.clase = clase;
@@ -25,18 +26,48 @@ app.controller('indexController', [function() {
     };
     init();
     vm.declaraciones = [];
-    vm.isActive = function(link) {
-        //Para verificar en cuál menú se encuentra ubicado el usuario y asignar la clase 'active' al link.
-        return true;
+
+    //Variables y funciones sólo para manipular el estado y la clase 'active' de los enlaces del navbar.
+    vm.verRegistrar = false;
+    vm.verConsultar = false;
+    vm.verAcerca = true;
+    vm.activeRegistrar = function() {
+        //Si se hizo clic en Registrar, desactivar los demás.
+        //Esto hará que el link Registrar tome la clase 'active' y su color sea más claro. 
+        vm.verRegistrar = true;
+        vm.verAcerca = false;
+        vm.verConsultar = false;
     };
+    vm.activeConsultar = function() {
+        vm.verConsultar = true;
+        vm.verRegistrar = false;
+        vm.verAcerca = false;
+    };
+    vm.activeAcerca = function() {
+        vm.verAcerca = true;
+        vm.verRegistrar = false;
+        vm.verConsultar = false;
+    };
+    //Verificar en cuál ruta está, en caso de recargar la página.
+    if ($location.path() == '/registrar/') {
+        vm.activeRegistrar()
+    } else if ($location.path() == '/consultar/') {
+        vm.activeConsultar();
+    } else if ($location.path() == '/acerca/') {
+        vm.activeAcerca();
+    }
+    //Fin
+
     vm.meses = [
         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
     vm.guardar = function() {
+        vm.declaracion.correccion.fecha = $('#datepicker').val();
         var cantidad_anterior = vm.declaraciones.length;
         var cantidad_nueva = vm.declaraciones.push(vm.declaracion);
         if (cantidad_anterior < cantidad_nueva) {
+            console.log(vm.declaracion);
             init();
             alert("Registró correctamente");
         } else {

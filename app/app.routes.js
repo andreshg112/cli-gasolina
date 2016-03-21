@@ -7,13 +7,13 @@
                 .when('/', {
                     templateUrl: 'app/components/acerca/acercaView.html'
                 })
-                .when('/Registrar/', {
+                .when('/registrar/', {
                     templateUrl: 'app/components/registrar/registrarView.html'
                 })
-                .when('/Consultar/', {
+                .when('/consultar/', {
                     templateUrl: 'app/components/consultar/consultarView.html'
                 })
-                .when('/Acerca/', {
+                .when('/acerca/', {
                     templateUrl: 'app/components/acerca/acercaView.html'
                 });
         }]);
