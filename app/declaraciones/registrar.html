@@ -65,7 +65,7 @@
                         </div>
                         <label class="col-sm-1 control-label">Fecha:</label>
                         <div class="col-sm-3">
-                            <input id="datepicker" type="date" ng-model="regVm.declaracion.correccion.fecha" class="form-control" />
+                            <input id="datepicker" type="text" ng-model="regVm.declaracion.correccion.fecha" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -98,18 +98,18 @@
                 <div class="panel-heading">Sección E: Información general</div>
                 <div class="panel-body">
                     <div id="fila-4-1" class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">E1: Apellidos y Nombre o Razón Social del declarante</div>
                                 <div class="panel-body">
-                                    <label class="control-label col-sm-6">Apellidos y Nombre o Razón Social:</label>
-                                    <div class="col-sm-6">
+                                    <label class="col-sm-12">Apellidos y Nombre o Razón Social:</label>
+                                    <div class="col-sm-12">
                                         <input class="form-control" type="text" ng-model="regVm.declaracion.nombres">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">E2: Identificación del declarante</div>
                                 <div class="panel-body">
@@ -121,11 +121,11 @@
                                         </select>
                                     </div>
                                     <label class="control-label col-sm-2">Número:</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.numero_documento">
                                     </div>
                                     <label class="control-label col-sm-1">D.V.:</label>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.dv">
                                     </div>
                                 </div>
