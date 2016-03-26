@@ -21,7 +21,14 @@
         }
 
         function activate() {
-            vm.declaraciones = DeclaracionesService.all();
+            // lstorage o memory
+            // vm.declaraciones = DeclaracionesService.all();
+            DeclaracionesService.all()
+                .then(function(response) { vm.declaraciones = response.data; })
+                .catch(function(error) {
+                    console.log(error);
+                    alert(error.statusText);
+                });
         }
 
         activate();

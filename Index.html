@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Parcial 1 - Tecnología Web II</title>
+    <title>Taller - Tecnología Web II</title>
     <link href="assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/libs/bootstrap/sticky-footer.css" rel="stylesheet" />
-    <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
     <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
 </head>
 
 <body ng-controller="IndexController as index">
@@ -53,14 +54,15 @@
     <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
     <script src="assets/libs/angular/angular.min.js"></script>
     <script src="assets/libs/angular/angular-route.min.js"></script>
-    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+    <script src="assets/libs/angular/ngStorage.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.routes.js"></script>
-    <script src="app/declaraciones/decs-lstorage.service.js"></script>
+    <script src="app/declaraciones/decs-$http.service.js"></script>
+    <!--<script src="app/declaraciones/decs-lstorage.service.js"></script>-->
     <!--<script src="app/declaraciones/decs-memory.service.js"></script>-->
-    <script src="app/extra/meses.service.js"></script>
-    <script src="app/extra/departamentos.service.js"></script>
-    <script src="app/extra/anios.service.js"></script>
+    <script src="app/compartido/meses.service.js"></script>
+    <script src="app/compartido/departamentos.service.js"></script>
+    <script src="app/compartido/anios.service.js"></script>
     <script src="app/index/index.controller.js"></script>
     <script src="app/declaraciones/registrar.controller.js"></script>
     <script src="app/declaraciones/consultar.controller.js"></script>

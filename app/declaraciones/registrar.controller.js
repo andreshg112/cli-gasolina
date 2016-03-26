@@ -21,7 +21,6 @@
         //Funciones, en orden alfabético
         function activate() {
             vm.declaracion = {};
-            vm.declaracion.correccion = {};
             vm.declaracion.municipio = "";
             vm.municipios = [];
             //Así son las clases en Javascript ES 5.
@@ -33,7 +32,7 @@
                 this.base_gravable = 0;
                 this.sobretasa = 0;
             };
-            vm.declaracion.gasolinas = [
+            vm.declaracion.gasolinas_attributes = [
                 new Gasolina("Gasolina corriente básica"),
                 new Gasolina("Gasolina corriente oxigenada"),
                 new Gasolina("Gasolina extra básica"),
@@ -54,15 +53,26 @@
         }
 
         function guardar() {
-            vm.declaracion.correccion.fecha = $('#datepicker').val();
+            vm.declaracion.correccion_fecha = $('#datepicker').val();
             console.log(vm.declaracion);
+            /*lstorage o memory
             if (DeclaracionesService.save(vm.declaracion)) {
                 activate();
                 vm.respuestaRegistro = "Registró correctamente";
             } else {
                 vm.respuestaRegistro = "Error registrando.";
-            }
-            $("#modalRegistro").modal();
+            }*/
+            DeclaracionesService.save(vm.declaracion)
+                .then(function(response) {
+                    console.log(response);
+                    activate();
+                    vm.respuestaRegistro = "Registró correctamente";
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    vm.respuestaRegistro = error.statusText;
+                })
+                .finally(function() { $("#modalRegistro").modal(); });
         }
 
         activate();

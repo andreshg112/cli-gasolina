@@ -16,22 +16,22 @@
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">Departamento:</label>
                         <div class="col-sm-4">
-                            <select ng-model="regVm.declaracion.entidad.departamento" ng-options="depart.nombre as depart.nombre for depart in regVm.departamentos"
+                            <select ng-model="regVm.declaracion.entidad_departamento" ng-options="depart.nombre as depart.nombre for depart in regVm.departamentos"
                             class="form-control"></select>
                         </div>
                         <label class="col-sm-3 control-label">Código DANE:</label>
                         <div class="col-sm-3">
-                            <input type="text" ng-model="regVm.declaracion.entidad.codigo_dane" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad_codigo_dane" class="form-control" />
                         </div>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-2 control-label">NIT:</label>
                         <div class="col-sm-4">
-                            <input type="text" ng-model="regVm.declaracion.entidad.nit" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad_nit" class="form-control" />
                         </div>
-                        <label class="col-sm-3 control-label">D. V.:</label>
+                        <label class="col-sm-3 control-label">D.V.:</label>
                         <div class="col-sm-3">
-                            <input type="text" ng-model="regVm.declaracion.entidad.dv" class="form-control" />
+                            <input type="text" ng-model="regVm.declaracion.entidad_dv" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -55,17 +55,17 @@
                 <div class="panel-heading">Sección C: Información de la declaración que se corrige</div>
                 <div class="panel-body">
                     <div class="row form-group">
-                        <label class="col-sm-2 control-label">Correción:</label>
+                        <label class="col-sm-2 control-label">Corrección:</label>
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="regVm.declaracion.correccion.valor" class="form-control" />
+                            <input type="checkbox" ng-model="regVm.declaracion.correccion_valor" class="form-control" />
                         </div>
                         <label class="col-sm-2">Número de declaración:</label>
                         <div class="col-sm-3">
-                            <input type="number" min="0" ng-model="regVm.declaracion.correccion.numero_declaracion" class="form-control" />
+                            <input type="number" min="0" ng-model="regVm.declaracion.correccion_id" class="form-control" />
                         </div>
                         <label class="col-sm-1 control-label">Fecha:</label>
                         <div class="col-sm-3">
-                            <input id="datepicker" type="text" ng-model="regVm.declaracion.correccion.fecha" class="form-control" />
+                            <input id="datepicker" type="text" ng-model="regVm.declaracion.correccion_fecha" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -122,11 +122,11 @@
                                     </div>
                                     <label class="control-label col-sm-2">Número:</label>
                                     <div class="col-sm-3">
-                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.numero_documento">
+                                        <input type="text" min="0" class="form-control" ng-model="regVm.declaracion.numero_documento">
                                     </div>
                                     <label class="control-label col-sm-1">D.V.:</label>
                                     <div class="col-sm-2">
-                                        <input type="number" min="0" class="form-control" ng-model="regVm.declaracion.dv">
+                                        <input type="text" min="0" class="form-control" ng-model="regVm.declaracion.dv">
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                                 <th>Base gravable</th>
                                 <th>Sobretasa</th>
                             </tr>
-                            <tr ng-repeat="gasolina in regVm.declaracion.gasolinas">
+                            <tr ng-repeat="gasolina in regVm.declaracion.gasolinas_attributes">
                                 <td>{{$index + 1}}. {{gasolina.clase}}</td>
                                 <td>
                                     <input type="number" min="0" class="form-control" ng-model="gasolina.galones_gravado" ng-change="regVm.calcular(gasolina)"
