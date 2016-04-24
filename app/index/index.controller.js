@@ -34,7 +34,7 @@
         };
         //Verificar en cuál ruta está, en caso de recargar la página.
         if ($location.path() == '/registrar/') {
-            vm.activeRegistrar()
+            vm.activeRegistrar();
         } else if ($location.path() == '/consultar/') {
             vm.activeConsultar();
         } else if ($location.path() == '/acerca/') {

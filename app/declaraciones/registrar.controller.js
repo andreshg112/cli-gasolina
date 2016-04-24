@@ -24,7 +24,7 @@
             vm.declaracion.municipio = "";
             vm.municipios = [];
             //Así son las clases en Javascript ES 5.
-            var Gasolina = function(clase = "") {
+            var Gasolina = function(clase) {
                 this.clase = clase;
                 this.galones_gravado = 0;
                 this.precio_referencia = 0;
@@ -45,11 +45,11 @@
         function calcular(gasolina) {
             gasolina.base_gravable = gasolina.galones_gravado * (1 - (gasolina.porcentaje_alcohol / 100)) * gasolina.precio_referencia;
             gasolina.sobretasa = gasolina.base_gravable * 0.06;
-        };
+        }
 
         function cargarMunicipios() {
             vm.declaracion.municipio = "";
-            console.log(vm.municipios = DepartamentosService.getMunicipios(vm.declaracion.departamento));
+            vm.municipios = DepartamentosService.getMunicipios(vm.declaracion.departamento);
         }
 
         function guardar() {
@@ -72,7 +72,9 @@
                     console.log(error);
                     vm.respuestaRegistro = error.statusText;
                 })
-                .finally(function() { $("#modalRegistro").modal(); });
+                .finally(function() { 
+                    $("#modalRegistro").modal(); 
+                });
         }
 
         activate();
